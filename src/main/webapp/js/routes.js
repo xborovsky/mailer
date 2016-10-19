@@ -11,21 +11,26 @@
         $urlRouterProvider.otherwise('/received/list');
         
         $stateProvider
-            .state('received_list', {
+            .state('main', {
+                templateUrl : 'partials/main.html',
+                controller : 'MainController as mainCtrl',
+                resolve : {
+                    receivedUnreadEmailsCnt : ['EmailService', function(EmailService) {
+                        return EmailService.countReceivedUnreadEmails();
+                    }]
+                }
+            })
+            .state('main.received_list', {
                 url : '/received/list',
                 templateUrl : 'partials/received-list.html',
                 resolve : {
                     emails : ['EmailService', function(EmailService) {
-                            console.log('XXX');
                         return EmailService.getAllReceivedEmails();
-                    }],
-                    receivedUnreadEmailsCnt : ['EmailService', function(EmailService) {
-                        return EmailService.countReceivedUnreadEmails();
                     }]
                 },
                 controller : 'ReceivedEmailListController as receivedListCtrl'
             })
-            .state('sent_list', {
+            .state('main.sent_list', {
                 url : '/sent/list',
                 template : '',
                 resolve : {
@@ -35,7 +40,7 @@
                 },
                 controller : 'SentEmailListController as sentListCtrl'
             })
-            .state('new_email', {
+            .state('main.new_email', {
                 url : '/new',
                 templateUrl : 'partials/new-email.html',
                 controller : 'NewEmailController as newMailCtrl'

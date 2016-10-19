@@ -17,8 +17,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "email")
 @NamedQueries({
-    @NamedQuery(name = Email.QUERY_FIND_ALL_RECEIVED, query = "SELECT e FROM Email e WHERE e.isOutgoing = true ORDER BY e.created DESC"),
-    @NamedQuery(name = Email.QUERY_FIND_ALL_SENT, query = "SELECT e FROM Email e WHERE e.isOutgoing = false ORDER BY e.created DESC"),
+    @NamedQuery(name = Email.QUERY_FIND_ALL_RECEIVED, query = "SELECT e FROM Email e WHERE e.isOutgoing = false ORDER BY e.created DESC"),
+    @NamedQuery(name = Email.QUERY_FIND_ALL_SENT, query = "SELECT e FROM Email e WHERE e.isOutgoing = true ORDER BY e.created DESC"),
     @NamedQuery(name = Email.QUERY_COUNT_UNREAD_RECEIVED, query = "SELECT COUNT(e.id) FROM Email e WHERE e.isOutgoing = false AND e.read = false")
 })
 public class Email implements Serializable {

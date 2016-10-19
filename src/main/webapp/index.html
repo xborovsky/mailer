@@ -19,14 +19,7 @@
             </div>
         </div>
         
-        <div class="container">
-            <div class="col-xs-12 col-md-2">
-                <div ng-include="'partials/menu.html'"></div>
-            </div>
-            <div class="col-xs-12 col-md-10">
-                <ui-view></ui-view>
-            </div>
-        </div>
+        <ui-view></ui-view>
         
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
@@ -35,10 +28,10 @@
         <script src="js/modules/email.module.js"></script>
         
         <!-- controllers -->
+        <script src="js/controllers/main.controller.js"></script>
         <script src="js/controllers/received_email_list.controller.js"></script>
         <script src="js/controllers/sent_email_list.controller.js"></script>
         <script src="js/controllers/new_email.controller.js"></script>
-        <script src="js/controllers/menu.controller.js"></script>
         
         <!-- services -->
         <script src="js/services/email.service.js"></script>

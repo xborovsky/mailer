@@ -22,7 +22,7 @@
                 message : ctrl.message
             }).then(function() {
                 console.log('email sent successfully!');
-                $state.go('received_list');
+                $state.transitionTo('main.received_list', {}, {reload : true});
             }, function() {
                 console.error('could not send email!');
             });
@@ -33,7 +33,7 @@
             ctrl.recipient = '';
             ctrl.subject = '';
             ctrl.message = '';
-            $state.go('received_list');
+            $state.go('main.received_list');
         };
     }
     

@@ -1,13 +1,13 @@
-<div ng-controller="MenuController as menuCtrl">
-    <button type="button" class="btn btn-block btn-sm btn-danger" ui-sref="new_email">
+<div>
+    <button type="button" class="btn btn-block btn-sm btn-danger" ui-sref="main.new_email">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> New email
     </button>
 
     <br />
 
     <div class="list-group">
-        <a href="#" class="list-group-item active">
-            Received <span class="badge">{{menuCtrl.receivedUnreadEmailsCnt}}</span>
+        <a href="#" class="list-group-item active" ui-sref="main.received_list">
+            Received <span class="badge">{{mainCtrl.receivedUnreadEmailsCnt}}</span>
         </a>
         <a href="#" class="list-group-item">Sent</a>
         <a href="#" class="list-group-item">Trash</a>

@@ -3,16 +3,20 @@
     'use strict';
     
     angular.module('EmailApp')
-        .controller('ReceivedEmailListController', ReceivedEmailListController);
+        .controller('ReceivedEmailListController', ReceivedEmailListController)
+        .filter('substringFilter', SubstringFilter);
     
-    ReceivedEmailListController.$inject = ['emails', 'receivedUnreadEmailsCnt'];
-    function ReceivedEmailListController(emails, receivedUnreadEmailsCnt) {
+    ReceivedEmailListController.$inject = ['emails'];
+    function ReceivedEmailListController(emails) {
         var ctrl = this;
         
-        console.log('emails: ', emails);
-        console.log('receivedUnreadEmailsCnt: ', receivedUnreadEmailsCnt);
-        
-        ctrl.emails = emails;
+        ctrl.emails = emails.data;
+    }
+    
+    function SubstringFilter() {
+        return function(input) {;
+            return input.substring(0, 50) + (input.length > 50 ? '...' : '');
+        };
     }
     
 })();

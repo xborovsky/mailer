@@ -31,6 +31,7 @@ public class EmailResource {
     @Path("/received/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Email> getAllReceivedEmails() {
+        System.out.println(emailDao.getAllReceivedEmails().size());
         return emailDao.getAllReceivedEmails();
     }
     
