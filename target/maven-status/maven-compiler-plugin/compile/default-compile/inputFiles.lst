@@ -1,0 +1,11 @@
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\bean\NewEmailBean.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\entity\Email.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\util\TimeManager.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\dao\EmailDao.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\qualifiers\Mock.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\resource\EmailResource.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\config\RestConfig.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\service\MailSender.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\dao\EmailDaoImpl.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\service\MailSenderMockImpl.java
+C:\Users\marek\Documents\NetBeansProjects\mailer\src\main\java\cz\marek_b\mailer\service\MailSenderImpl.java

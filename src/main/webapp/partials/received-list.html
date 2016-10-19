@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Received</th>
+        </tr>
+    </thead>
+    <tbody ng-if="receivedListCtrl.emails.length">
+        <tr ng-repeat="email in receivedListCtrl.emails">
+            <td>{{email.sender}}</td>
+            <td>{{email.subject}}</td>
+            <td>{{email.text}}</td>
+            <td>{{email.created}}</td>
+        </tr>
+    </tbody>
+    <tbody ng-if="!receivedListCtrl.emails.length">
+        <tr>
+            <td colspan="4" class="text-center"><strong>no emails yet...</strong></td>
+        </tr>
+    </tbody>
+</table>
