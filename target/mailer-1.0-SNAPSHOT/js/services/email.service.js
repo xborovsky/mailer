@@ -36,6 +36,21 @@
         service.sendEmail = function(emailData) {
             return $http.post(ENDPOINT_URL + '/email/send', JSON.stringify(emailData));
         };
+        
+        service.getTrashEmails = function() {
+            return $http.get(ENDPOINT_URL + '/email/trash/list')
+                .success(function(trashEmails) {
+                    return trashEmails.data;
+                });
+        };
+        
+        service.trashEmail = function(id) {
+            return $http.post(ENDPOINT_URL + '/email/trash', JSON.stringify(id));
+        };
+        
+        service.deleteEmail = function(id) {
+            return $http.post(ENDPOINT_URL + '/email/delete', JSON.stringify(id));
+        };
     }
     
 })();

@@ -4,18 +4,17 @@
     
     angular.module('EmailApp')
         .controller('ReceivedEmailListController', ReceivedEmailListController)
-        .filter('substringFilter', SubstringFilter);
-    
-    ReceivedEmailListController.$inject = ['emails'];
-    function ReceivedEmailListController(emails) {
+
+    ReceivedEmailListController.$inject = ['emails', 'EmailService', '$state'];
+    function ReceivedEmailListController(emails, EmailService, $state) {
         var ctrl = this;
         
         ctrl.emails = emails.data;
-    }
-    
-    function SubstringFilter() {
-        return function(input) {;
-            return input.substring(0, 50) + (input.length > 50 ? '...' : '');
+        
+        ctrl.trashEmail = function(id) {
+            EmailService.trashEmail(id).then(function() {
+                $state.go('main.received_list', {}, {reload : true});
+            });
         };
     }
     

@@ -31,7 +31,6 @@ public class EmailResource {
     @Path("/received/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Email> getAllReceivedEmails() {
-        System.out.println(emailDao.getAllReceivedEmails().size());
         return emailDao.getAllReceivedEmails();
     }
     
@@ -58,6 +57,35 @@ public class EmailResource {
             newEmailBean.getSubject(),
             newEmailBean.getMessage()
         ) ? Response.status(Status.OK) : Response.status(Status.INTERNAL_SERVER_ERROR)).build();
+    }
+    
+    @GET
+    @Path("/trash/list")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Email> getTrashList() {
+        return emailDao.getTrashedEmails();
+    }
+    
+    @POST
+    @Path("/trash")
+    public void trashEmail(long id) {
+        Email email = emailDao.findById(id);
+        if (email == null) {
+            throw new IllegalStateException("Email does not exist!");
+        }
+        
+        emailDao.trashEmail(email);
+    }
+    
+    @POST
+    @Path("/delete")
+    public void deleteEmail(long id) {
+        Email email = emailDao.findById(id);
+        if (email == null) {
+            throw new IllegalStateException("Email does not exist!");
+        }
+        
+        emailDao.delete(email);
     }
     
 }

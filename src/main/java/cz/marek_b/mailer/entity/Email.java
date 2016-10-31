@@ -17,9 +17,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "email")
 @NamedQueries({
-    @NamedQuery(name = Email.QUERY_FIND_ALL_RECEIVED, query = "SELECT e FROM Email e WHERE e.isOutgoing = false ORDER BY e.created DESC"),
-    @NamedQuery(name = Email.QUERY_FIND_ALL_SENT, query = "SELECT e FROM Email e WHERE e.isOutgoing = true ORDER BY e.created DESC"),
-    @NamedQuery(name = Email.QUERY_COUNT_UNREAD_RECEIVED, query = "SELECT COUNT(e.id) FROM Email e WHERE e.isOutgoing = false AND e.read = false")
+    @NamedQuery(name = Email.QUERY_FIND_ALL_RECEIVED, query = "SELECT e FROM Email e WHERE e.isOutgoing = false AND e.trashed = false ORDER BY e.created DESC"),
+    @NamedQuery(name = Email.QUERY_FIND_ALL_SENT, query = "SELECT e FROM Email e WHERE e.isOutgoing = true AND e.trashed = false ORDER BY e.created DESC"),
+    @NamedQuery(name = Email.QUERY_COUNT_UNREAD_RECEIVED, query = "SELECT COUNT(e.id) FROM Email e WHERE e.isOutgoing = false AND e.read = false AND e.trashed = false"),
+    @NamedQuery(name = Email.QUERY_FIND_TRASHED, query = "SELECT e FROM Email e WHERE e.trashed = true AND e.isOutgoing = false ORDER BY e.created DESC")
 })
 public class Email implements Serializable {
     private static final long serialVersionUID = 7827615744138606045L;
@@ -27,6 +28,7 @@ public class Email implements Serializable {
     public static final String QUERY_FIND_ALL_RECEIVED = "Email.findAllReceived";
     public static final String QUERY_FIND_ALL_SENT = "Email.findAllSent";
     public static final String QUERY_COUNT_UNREAD_RECEIVED = "Email.countUnreadReceived";
+    public static final String QUERY_FIND_TRASHED = "Email.findTrashed";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +50,8 @@ public class Email implements Serializable {
     private boolean isOutgoing;
     @Column(name = "is_read", nullable = false)
     private boolean read = false;
+    @Column(name = "is_trashed", nullable = false)
+    private boolean trashed = false;
     
     public Email() {}
     
@@ -119,6 +123,14 @@ public class Email implements Serializable {
         this.read = read;
     }
 
+    public boolean isTrashed() {
+        return trashed;
+    }
+
+    public void setTrashed(boolean trashed) {
+        this.trashed = trashed;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -152,6 +164,7 @@ public class Email implements Serializable {
                     ", created=" + created + 
                     ", isOutgoing=" + isOutgoing + 
                     ", read=" + read +
+                    ", trashed=" + trashed +
                 '}';
     }
     

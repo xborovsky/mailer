@@ -17,4 +17,8 @@ public interface EmailDao {
     
     int countUnreadReceived();
     
+    List<Email> getTrashedEmails();
+    
+    void trashEmail(Email email);
+    
 }

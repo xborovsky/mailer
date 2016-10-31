@@ -44,6 +44,16 @@
                 url : '/new',
                 templateUrl : 'partials/new-email.html',
                 controller : 'NewEmailController as newMailCtrl'
+            })
+            .state('main.trash_list', {
+                url : '/trash/list',
+                templateUrl : 'partials/trash-list.html',
+                resolve : {
+                    emails : ['EmailService', function(EmailService) {
+                        return EmailService.getTrashEmails();
+                    }]
+                },
+                controller : 'TrashListController as trashListCtrl'
             });
         
     }

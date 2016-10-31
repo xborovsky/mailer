@@ -5,6 +5,7 @@
             <th>Subject</th>
             <th>Message</th>
             <th>Received</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody ng-if="receivedListCtrl.emails.length">
@@ -13,6 +14,7 @@
             <td>{{email.subject}}</td>
             <td>{{email.text | substringFilter}}</td>
             <td>{{email.created | date : 'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td><a href="#" ng-click="receivedListCtrl.trashEmail(email.id)" confirm-click="Are you sure you want to trash the selected email?"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
     <tbody ng-if="!receivedListCtrl.emails.length">

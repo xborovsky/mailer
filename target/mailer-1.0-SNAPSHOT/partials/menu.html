@@ -6,10 +6,10 @@
     <br />
 
     <div class="list-group">
-        <a href="#" class="list-group-item active" ui-sref="main.received_list">
+        <a href="#" class="list-group-item" ui-sref="main.received_list" ui-sref-active="active">
             Received <span class="badge">{{mainCtrl.receivedUnreadEmailsCnt}}</span>
         </a>
-        <a href="#" class="list-group-item">Sent</a>
-        <a href="#" class="list-group-item">Trash</a>
+        <a href="#" class="list-group-item" ui-sref="main.sent_list">Sent</a>
+        <a href="#" class="list-group-item" ui-sref-active="active" ui-sref="main.trash_list">Trash</a>
     </div>
 </div>

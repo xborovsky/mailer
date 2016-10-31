@@ -8,16 +8,16 @@
             <th>&nbsp;</th>
         </tr>
     </thead>
-    <tbody ng-if="receivedListCtrl.emails.length">
-        <tr ng-repeat="email in receivedListCtrl.emails">
+    <tbody ng-if="trashListCtrl.emails.length">
+        <tr ng-repeat="email in trashListCtrl.emails">
             <td>{{email.sender}}</td>
             <td>{{email.subject}}</td>
             <td>{{email.text | substringFilter}}</td>
             <td>{{email.created | date : 'dd.MM.yyyy HH:mm:ss'}}</td>
-            <td><a href="#" ng-click="receivedListCtrl.trashEmail(email.id)" confirm-click="Are you sure you want to trash the selected email?"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            <td><a href="#" ng-click="trashListCtrl.deleteEmail(email.id)" confirm-click="Are you sure you want to delete the selected email forever?"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
-    <tbody ng-if="!receivedListCtrl.emails.length">
+    <tbody ng-if="!trashListCtrl.emails.length">
         <tr>
             <td colspan="4" class="text-center"><strong>no emails yet...</strong></td>
         </tr>

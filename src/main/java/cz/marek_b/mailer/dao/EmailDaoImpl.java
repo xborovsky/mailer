@@ -20,6 +20,10 @@ public class EmailDaoImpl implements EmailDao {
 
     @Override
     public void delete(Email email) {
+        if (!em.contains(email)) {
+            email = em.merge(email);
+        }
+
         em.remove(email);
         em.flush();
     }
@@ -45,6 +49,19 @@ public class EmailDaoImpl implements EmailDao {
     public int countUnreadReceived() {
         return ((Number) em.createNamedQuery(Email.QUERY_COUNT_UNREAD_RECEIVED)
             .getSingleResult()).intValue();
+    }
+
+    @Override
+    public List<Email> getTrashedEmails() {
+        return em.createNamedQuery(Email.QUERY_FIND_TRASHED, Email.class)
+            .getResultList();
+    }
+    
+    @Override
+    public void trashEmail(Email email) {
+        email.setTrashed(true);
+        em.merge(email);
+        em.flush();
     }
     
 }
