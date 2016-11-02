@@ -1,0 +1,25 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Sent</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody ng-if="sentListCtrl.emails.length">
+        <tr ng-repeat="email in sentListCtrl.emails">
+            <td>{{sentListCtrl.recipient}}</td>
+            <td>{{sentListCtrl.subject}}</td>
+            <td>{{sentListCtrl.text | substringFilter}}</td>
+            <td>{{sentListCtrl.created | date : 'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td><a href="#" ng-click="sentListCtrl.trashEmail(email.id)" confirm-click="Are you sure you want to trash the selected email?"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        </tr>
+    </tbody>
+    <tbody ng-if="!sentListCtrl.emails.length">
+        <tr>
+            <td colspan="4" class="text-center"><strong>no emails yet...</strong></td>
+        </tr>
+    </tbody>
+</table>

@@ -32,7 +32,7 @@
             })
             .state('main.sent_list', {
                 url : '/sent/list',
-                template : '',
+                templateUrl : 'partials/sent-list.html',
                 resolve : {
                     emails : ['EmailService', function(EmailService) {
                         return EmailService.getAllSentEmails();
